@@ -37,13 +37,12 @@ $content = curl($url);
 echo ('<br/>Url='.$url.'<br/>');
 $host=substr($url,7,strpos($url,'/',8)-7); //выдергиваем хост;   (на регулярные переделать)
 echo 'Host='.$host.'<br/>';
-/*
+
 //регулярным выражением дергаем <title>
-preg_match('/<title>(.*?)<//title>/si',$content,$title);
-if (mb_check_encoding ($title[1], 'UTF-8')===FALSE) 
-$title[1]=mb_convert_encoding($title[1],'utf-8');
-echo '<br/>Title: '.htmlspecialchars($title[1]);
-*/
+if (preg_match('/<title>(.*?)<\/title>/si',$content,$title))
+    echo 'title= '.htmlspecialchars(fixcharset($title[1])).'<br/>';
+    else
+    echo 'title= Нету'.'<br/>';
 if (preg_match('/<meta(?=[^>]* name *= *"?keywords"?) [^>]*?(?<= )content *= *"([^"]*)"[^>]*>/i',$content,$keywords))
     echo 'Keywords= '.fixcharset($keywords[1]).'<br/>';
     else

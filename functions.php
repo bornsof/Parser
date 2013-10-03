@@ -3,7 +3,7 @@
 //из-за получения данных в рахных кодировках, меняем не утф-8 на утф-8 )))
  function fixcharset($str){ 
     if (mb_check_encoding ($str, 'UTF-8')===FALSE) 
-    str=mb_convert_encoding($str,'utf-8');
+    $str=mb_convert_encoding($str,'utf-8');
 return $str;
 }
 
