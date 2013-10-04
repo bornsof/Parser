@@ -24,7 +24,7 @@ curl_setopt($ch, CURLOPT_URL,$url); // присваиваем URL
 curl_setopt($ch, CURLOPT_FAILONERROR, 1);  //игнорируем ошибки 400+
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);// разрешаем редиректы  
 curl_setopt($ch, CURLOPT_RETURNTRANSFER,1); // возвращаем как переменную
-curl_setopt($ch, CURLOPT_TIMEOUT, 3); // таймаут на 3 секунды 
+curl_setopt($ch, CURLOPT_TIMEOUT, 10); // таймаут на 3 секунды 
 $result = curl_exec($ch); // Отправляем запрос 
 curl_close($ch);   
 return $result; 

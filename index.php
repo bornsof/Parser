@@ -32,6 +32,9 @@ if (isset ($_GET['query']))
 $url = ('https://www.google.ru/search?q='.$query.'&oq='.$query); //итоговый запрос сюда
 $content = curl($url);
 $str=get_url($content);
+
+
+
 foreach ($str as $url){ //основной цикл поехал(можно курл в многопоточность для скорости определить =) )
 $content = curl($url);
 echo ('<br/>Url='.$url.'<br/>');
@@ -41,8 +44,9 @@ echo 'Host='.$host.'<br/>';
 //регулярным выражением дергаем <title>
 if (preg_match('/<title>(.*?)<\/title>/si',$content,$title))
     echo 'title= '.htmlspecialchars(fixcharset($title[1])).'<br/>';
-    else
+    else {
     echo 'title= Нету'.'<br/>';
+	echo 'Нет результата плять:'.htmlspecialchars($content).'<br/>';}
 if (preg_match('/<meta(?=[^>]* name *= *"?keywords"?) [^>]*?(?<= )content *= *"([^"]*)"[^>]*>/i',$content,$keywords))
     echo 'Keywords= '.fixcharset($keywords[1]).'<br/>';
     else
@@ -51,7 +55,10 @@ if (preg_match('/<meta(?=[^>]* name *= *"?description"?) [^>]*?(?<= )content *= 
     echo 'description= '.fixcharset($description[1]).'<br/>';
     else
     echo 'description= Нету'.'<br/>';
+	
 }
+
+unset($url);
 ?>
  </body>
  </html>
