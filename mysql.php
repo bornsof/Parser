@@ -4,8 +4,8 @@ require('config.inc');
 @ $db = new mysqli($dbhost, $dbuser, $dbpassword, $dbname);
 $db->set_charset('utf8');
 if ($db->connect_errno) {
-	die ('Ошибка при подключении к базе данных. Ошибка номер: '.$db->connect_errno);
-	}
+    die ('Ошибка при подключении к базе данных. Ошибка номер: '.$db->connect_errno);
+    }
 //Создание базы
 //$query="create table parsed (id int unsigned not null auto_increment primary key, url char(100) not null, host char(70) not null, title text, keywords text, description text)";
 //Добавление записей

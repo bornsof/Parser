@@ -1,10 +1,9 @@
 <?php
 //Файл определения функций
+
+
+
 //из-за получения данных в рахных кодировках, меняем не утф-8 на утф-8 )))
- 
- 
-
-
  function fixcharset($str){ 
     if (mb_check_encoding ($str, 'UTF8')===FALSE) 
     $str=iconv("windows-1251","UTF-8",$str);
@@ -36,9 +35,9 @@ return $result;
 
  function get_url($content){ //можно на регулярное выражение переделать
 if (preg_match_all("/<h3 class=\"r\"><a href=\"(.*?)\" onmouse/iu",$content,$str))
-	return $str;
-	else 
-		return "Not found";
+    return $str;
+    else 
+        return "Not found";
 }
 
 ?>

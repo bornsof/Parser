@@ -13,26 +13,19 @@ if (isset($_POST['login']) && (isset($_POST['passwd']))){
     $_SESSION['user']=$login;
     $result->num_rows;
     }
-$db->close();
+
 }
-include('inc/header.php');
+include('inc/header.php'); //меню 
 if  (!isset($_SESSION['user']))
     include('login.php');//если юзер не авторизован выводим форму авторизации
 else{
 //только для зареганных юзверей
-    if (!isset($_GET['page'])){
-        $page="settings";
-    }
+    if (!isset($_GET['page']))
+        header("Location: index.php?page=settings"); //если переменная не определена, кидаем в настройки
     else
-    {
-        
-        if (isset($_POST['save'])){
-            $save=$_POST['save'];
-            }
         $page=$_GET['page'];
-
-    }
-    switch ($page) {
+    switch ($page) 
+        {
         case "settings":
             include("settings.php");
             break;
@@ -42,9 +35,12 @@ else{
         case "host":
             include("host.php");
             break;
-    } 
+        case "parser":
+            include("parser.php");
+            break;
+        } 
 }
-include('inc/footer.php');
+include('inc/footer.php');//подпись
 ?>
     
     
